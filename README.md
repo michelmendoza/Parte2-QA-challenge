@@ -52,7 +52,6 @@ config.capabilities = [
         // Configuração para emulador
         //'appium:deviceName': 'emulator-5554',
         //'appium:platformVersion': '11.0',
-
         'appium:orientation': 'PORTRAIT',
         'appium:automationName': 'UiAutomator2',
         // Caminho do APP 
