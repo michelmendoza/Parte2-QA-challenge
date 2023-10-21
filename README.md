@@ -1,14 +1,10 @@
 # QA Implementation
-# 
-# This boilerplate is currently based on:
-
+ 
 - **WebdriverIO:** `7.##.#`
 - **Appium:** `1.22.#`
+ 
 
-# Tips and Tricks
-
-## Useful information
-Check the following sites for more information about WebdriverIO/Appium
+## Links 
 - [WebdriverIO](http://webdriver.io)
 - [Appium Docs](http://appium.io/docs/en/about-appium/intro/)
  
