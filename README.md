@@ -60,9 +60,7 @@ config.capabilities = [
         'appium:appWaitActivity': 'br.com.voltbras.wecharge',
         'appium:newCommandTimeout': 240,
         'appium:noReset': true,
-        'appium:fullReset': false
-
-    },
+        'appium:fullReset': false    }
 
 wdio.shared.conf.ts
 
