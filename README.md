@@ -42,25 +42,26 @@ Check the following sites for more information about WebdriverIO/Appium
 
 
 wdio.android.app.conf.ts
-config.capabilities = [
-    {
-        platformName: 'Android',
-        maxInstances: 1,
-        // Configuração para dispositivo Fisico   
-        'appium:deviceName': '<ADB device Name>',
-        'appium:platformVersion': '10.0',
-        // Configuração para emulador
-        //'appium:deviceName': 'emulator-5554',
-        //'appium:platformVersion': '11.0',
-        'appium:orientation': 'PORTRAIT',
-        'appium:automationName': 'UiAutomator2',
-        // Caminho do APP 
-        'appium:app': join(process.cwd(), './apps/br_com_voltbras_wecharge_v11.6.4.apk'),
-        // @ts-ignore
-        'appium:appWaitActivity': 'br.com.voltbras.wecharge',
-        'appium:newCommandTimeout': 240,
-        'appium:noReset': true,
-        'appium:fullReset': false    }
+
+    config.capabilities = [
+        {
+            platformName: 'Android',
+            maxInstances: 1,
+            // Configuração para dispositivo Fisico   
+            'appium:deviceName': '<ADB device Name>',
+            'appium:platformVersion': '10.0',
+            // Configuração para emulador
+            //'appium:deviceName': 'emulator-5554',
+            //'appium:platformVersion': '11.0',
+            'appium:orientation': 'PORTRAIT',
+            'appium:automationName': 'UiAutomator2',
+            // Caminho do APP 
+            'appium:app': join(process.cwd(), './apps/br_com_voltbras_wecharge_v11.6.4.apk'),
+            // @ts-ignore
+            'appium:appWaitActivity': 'br.com.voltbras.wecharge',
+            'appium:newCommandTimeout': 240,
+            'appium:noReset': true,
+            'appium:fullReset': false    }
 
 wdio.shared.conf.ts
 
