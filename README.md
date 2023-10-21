@@ -14,64 +14,67 @@ Check the following sites for more information about WebdriverIO/Appium
 - [Appium Pro Newsletter](http://appiumpro.com)
 
 
-## Installation
+# Installation Appium
 
-1. Installing Appium
-1. Copy the .apk file into root project folder ./apps
-1. Configure the wdio.android.app.conf.ts or wdio.ios.app.conf.ts according your devices
+- Installing Appium
 
-1. Running `git clone https://......`
-1. Running `yarn install`
-1. Running tests `npm run android.app` or `npm run android.browser`
+- Install Appium-doctor
+
+- Install Android Studio + Android SDK
+
+- Install Appium
+
+- npm i --location=global appium
+
+- appium driver install uiautomator2
+
+- Install Adb (para devices fisicos)
+
+- Configure JAVA_HOME e ANDROID_HOME
 
 
- ## Configuration files
+# Configurações
 
-This boilerplate uses a specific config for iOS and Android, see [configs](./config). The configs are based on a shared config
-[`wdio.shared.conf.ts`](./config/wdio.shared.conf.ts).
-This shared config holds **all the defaults** so the iOS and Android configs only need to hold the capabilities and specs that are needed
-for running on iOS and or Android (app or browser).
+- After Git clone < Project >
+- Copy the .apk file into root project folder ./apps
+- executar `yarn install`
+- Configure capabilities the wdio.android.app.conf.ts or wdio.ios.app.conf.ts according your devices  (Siga Abaixo)
+- executar tests `npm run android.app` or `npm run android.browser`
 
-Please check the [`wdio.shared.conf.ts`](./config/wdio.shared.conf.ts)-file for the minimal configuration options. Notes are added for why
-a different value has been selected in comparison to the default values WebdriverIO provides.
 
-Since we do not have Appium installed as part of this package we are going to use the globally installed version of Appium. This is
-configured in [`wdio.shared.local.appium.conf.ts`](./config/wdio.shared.local.appium.conf.ts).
 
-## Locator strategy for native apps
+config.capabilities = [
+    {
+        platformName: 'Android',
+        maxInstances: 1,
+        // Configuração para dispositivo Fisico   
+        'appium:deviceName': '<ADB device Name>',
+        'appium:platformVersion': '10.0',
+        // Configuração para emulador
+        //'appium:deviceName': 'emulator-5554',
+        //'appium:platformVersion': '11.0',
 
-< Guide to use better the Webio Framework and Appium>
-The locator strategy for this boilerplate is to use `accessibilityID`'s, see also the
-[WebdriverIO docs](https://webdriver.io/docs/selectors#accessibility-id) or this newsletter on
-[AppiumPro](https://appiumpro.com/editions/20).
-`accessibilityID`'s make it easy to script once and run on iOS and Android because most of the apps already have some `accessibilityID`'s.
+        'appium:orientation': 'PORTRAIT',
+        'appium:automationName': 'UiAutomator2',
+        // Caminho do APP 
+        'appium:app': join(process.cwd(), './apps/br_com_voltbras_wecharge_v11.6.4.apk'),
+        // @ts-ignore
+        'appium:appWaitActivity': 'br.com.voltbras.wecharge',
+        'appium:newCommandTimeout': 240,
+        'appium:noReset': true,
+        'appium:fullReset': false
 
-If `accessibilityID`'s can't be used, and for example only XPATH is available, then the following setup could be used to make cross-platform
-selectors
+    },
 
-```js
-const SELECTORS = {
-    WEB_VIEW_SCREEN: browser.isAndroid
-        ? '*//android.webkit.WebView'
-        : '*//XCUIElementTypeWebView',
-};
-```
+wdio.shared.conf.ts
 
-> **NOTE:** If you look into the screen/page-objects you might see that a lot of selectors are made private, meaning you can use the
-> elements in the spec-file itself. This has been done on purpose because one of the *best practices* is to remove all interactions from
-> your spec files and implement the interactions in the page objects. This will make it easier to maintain for the future and easier to
-> refactor if new interaction methods will be added or names will be adjusted.
+    mochaOpts: {
+        ui: "bdd",
+        /**
+         *  Gerenciar o Timeout geral da aplicação dependendo do hardware que esta executando  
+         */
+        timeout: 10 * 60 * 1000,  
+    },
 
-## Native App Tests
 
-All tests can be executed on te devices as configured in [`wdio.android.app.conf.ts`](./config/wdio.android.app.conf.ts) or
-[`wdio.ios.app.conf.ts`](./config/wdio.ios.app.conf.ts). Please check the below tests on what they do or on how to run them separately.
-
-```sh
-# For Android local execution
-npm run android.app
-
-# For iOS local execution
-npm run ios.app
-```
-
+ 
