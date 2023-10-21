@@ -11,8 +11,7 @@
 Check the following sites for more information about WebdriverIO/Appium
 - [WebdriverIO](http://webdriver.io)
 - [Appium Docs](http://appium.io/docs/en/about-appium/intro/)
-- [Appium Pro Newsletter](http://appiumpro.com)
-
+ 
 
 # Installation Appium
 
