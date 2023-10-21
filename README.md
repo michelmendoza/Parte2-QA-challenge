@@ -41,7 +41,7 @@ Check the following sites for more information about WebdriverIO/Appium
 - executar tests `npm run android.app` or `npm run android.browser`
 
 
-
+wdio.android.app.conf.ts
 config.capabilities = [
     {
         platformName: 'Android',
